@@ -1,1 +1,0 @@
-![](card-spin.gif)

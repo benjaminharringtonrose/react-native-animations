@@ -21,19 +21,19 @@ export const CardAnimationScreen = () => {
 
   const reanimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ rotate: rotation.value.toString() }, { scale: scale.value }],
+      transform: [{ rotateY: rotation.value.toString() }, { scale: scale.value }],
       opacity: opacity.value,
     };
   }, []);
 
-  const rotateClockwise = () => {
+  const start = () => {
     rotation.value = withSpring(0);
     opacity.value = withTiming(1);
     scale.value = withSpring(1);
     setToggle(!toggled);
   };
 
-  const rotateCounterClockwise = () => {
+  const reset = () => {
     rotation.value = withSpring(2 * PI);
     opacity.value = withTiming(0);
     scale.value = withSpring(0.2);
@@ -47,7 +47,7 @@ export const CardAnimationScreen = () => {
       </Animated.View>
       <Button
         label={toggled ? "CounterClockwise/FadeIn" : "Clockwise/FadeOut"}
-        onPress={() => (toggled ? rotateClockwise() : rotateCounterClockwise())}
+        onPress={() => (toggled ? start() : reset())}
         style={{ marginHorizontal: spacings.base }}
       />
     </SafeAreaView>
