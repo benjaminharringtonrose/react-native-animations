@@ -14,12 +14,14 @@ const { PI } = Math;
 
 export const CardAnimationScreen = () => {
   const [toggled, setToggle] = useState<boolean>(false);
+
   const rotation = useSharedValue(0);
   const opacity = useSharedValue(1);
+  const scale = useSharedValue(1);
 
   const reanimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ rotate: rotation.value.toString() }],
+      transform: [{ rotate: rotation.value.toString() }, { scale: scale.value }],
       opacity: opacity.value,
     };
   }, []);
@@ -27,12 +29,14 @@ export const CardAnimationScreen = () => {
   const rotateClockwise = () => {
     rotation.value = withSpring(0);
     opacity.value = withTiming(1);
+    scale.value = withSpring(1);
     setToggle(!toggled);
   };
 
   const rotateCounterClockwise = () => {
     rotation.value = withSpring(2 * PI);
     opacity.value = withTiming(0);
+    scale.value = withSpring(0.2);
     setToggle(!toggled);
   };
 
