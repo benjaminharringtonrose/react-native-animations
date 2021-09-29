@@ -12,7 +12,7 @@ import { Button } from "../components/Button";
 
 const { PI } = Math;
 
-export const CardAnimationScreen = () => {
+export const Screen1 = () => {
   const [toggled, setToggle] = useState<boolean>(false);
 
   const rotation = useSharedValue(0);
@@ -46,7 +46,7 @@ export const CardAnimationScreen = () => {
         <CreditCard card={Cards.Card1} />
       </Animated.View>
       <Button
-        label={toggled ? "CounterClockwise/FadeIn" : "Clockwise/FadeOut"}
+        label={toggled ? "Reset" : "Start"}
         onPress={() => (toggled ? start() : reset())}
         style={{ marginHorizontal: spacings.base }}
       />
