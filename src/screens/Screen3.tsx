@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 import { Page } from "../components/Page";
 
@@ -21,7 +21,6 @@ export const Screen3 = () => {
       style={[styles.container]}
     >
       {WORDS.map((title, index) => {
-        console.log("indices", index);
         return <Page key={index.toString()} title={title} index={index} translateX={translateX} />;
       })}
     </Animated.ScrollView>
